@@ -1,4 +1,4 @@
-scalaVersion := "3.8.4"
+scalaVersion := scalaV.v213
 
 lazy val codegen = (project in (file("") / "codegen"))
   .enablePlugins(SbtTwirl)
