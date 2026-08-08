@@ -11,8 +11,9 @@ lazy val induction = crossProject(JSPlatform, JVMPlatform)
     scalaVersion       := scalaV.v213,
     crossScalaVersions := Seq(scalaV.v212, scalaV.v213, scalaV.v3),
     scalafmtOnCompile  := true,
-    version            := "0.0.1-M4",
+    version            := "0.0.1-M5",
     publishTo          := localStaging.value,
+    name               := "simple-induction",
     libraryDependencies ++= libScalax.`scalatest`.value
   )
   .settings(sonaSettings *)
