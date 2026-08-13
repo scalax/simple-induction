@@ -18,8 +18,15 @@ class ExampleSpec extends AnyFlatSpec with should.Matchers {
     val nat3Compaare = Successor(3 -> "foo", Successor("bar" -> 8L, Successor('e' -> 7, NatZero)))
 
     nat3 should be(nat3Compaare)
+
+    nat3.head._1 should be(3)
+    nat3.head._2 should be("foo")
+
+    nat3.tail.head._1 should be("bar")
     nat3.tail.head._2 should be(8L)
+
     nat3.tail.tail.head._1 should be('e')
+    nat3.tail.tail.head._2 should be(7)
   }
 
 }
