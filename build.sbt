@@ -37,7 +37,7 @@ lazy val sonaSettings: Seq[Setting[?]] = List(
   ),
   developers           := List(developer1),
   description          := "Simple, and scalable. Use it to subvert the author's imagination.",
-  licenses             := List(License("MIT License", uri("https://github.com/scalax/simple/blob/main/LICENSE"))),
+  licenses             := List(License("MIT License", uri("https://github.com/scalax/simple-induction/blob/main/LICENSE"))),
   homepage             := Some(uri("https://github.com/scalax/simple")),
   pomIncludeRepository := { _ => false },
   publishMavenStyle    := true,
