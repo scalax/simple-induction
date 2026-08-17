@@ -12,7 +12,7 @@ class ExampleSpec extends AnyFlatSpec with should.Matchers {
     val nat1 = Successor(3, Successor("bar", Successor('e', NatZero)))
     val nat2 = Successor("foo", Successor(8L, Successor(7, NatZero)))
 
-    val func = InductionDemo.nextAliaas[Char, Int].nextAliaas[String, Long].nextAliaas[Int, String]
+    val func = InductionDemo.nextAlias[Char, Int].nextAlias[String, Long].nextAlias[Int, String]
 
     val nat3         = func.current(nat1, nat2)
     val nat3Compaare = Successor(3 -> "foo", Successor("bar" -> 8L, Successor('e' -> 7, NatZero)))

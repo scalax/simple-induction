@@ -2,7 +2,7 @@ package net.scalax.simple.append.support
 package collectioncount22
 package typeparameter22
 
-import net.scalax.simple.append.support.collectioncount22.typeparameter22.InductionAlias.M22
+import scala.annotation.tailrec
 
 trait InductionDemo[Z1 <: NatList, Z2 <: NatList, Z3 <: NatList]
     extends SimpleAppender[
@@ -74,15 +74,14 @@ trait InductionDemo[Z1 <: NatList, Z2 <: NatList, Z3 <: NatList]
       Any,
       Any
     ] { Self =>
-  override def next[T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T20, T21, T22]
-    : InductionDemo[Successor[T1, Z1], Successor[T2, Z2], Successor[(T1, T2), Z3]] =
+  final override def next[T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T20, T21, T22]
+    : InductionDemo[Successor[T1, Z1], Successor[T2, Z2], Successor[(T1, T2), Z3]] = Self.nextAlias[T1, T2]
+
+  def nextAlias[T1, T2]: InductionDemo[Successor[T1, Z1], Successor[T2, Z2], Successor[(T1, T2), Z3]] =
     new InductionDemo[Successor[T1, Z1], Successor[T2, Z2], Successor[(T1, T2), Z3]] {
       override def current: (Successor[T1, Z1], Successor[T2, Z2]) => Successor[(T1, T2), Z3] = (a, b) =>
         Successor((a.head, b.head), Self.current(a.tail, b.tail))
     }
-
-  def nextAliaas[T1, T2]: InductionDemo[Successor[T1, Z1], Successor[T2, Z2], Successor[(T1, T2), Z3]] =
-    Self.next[T1, T2, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any]
 }
 
 object InductionDemo extends InductionDemo[NatZero.type, NatZero.type, NatZero.type] {
