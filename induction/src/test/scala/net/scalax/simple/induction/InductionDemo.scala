@@ -74,7 +74,7 @@ trait InductionDemo[Z1 <: NatList, Z2 <: NatList, Z3 <: NatList]
       Any,
       Any
     ] { Self =>
-  final override def next[T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T20, T21, T22]
+  override def next[T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T20, T21, T22]
     : InductionDemo[Successor[T1, Z1], Successor[T2, Z2], Successor[(T1, T2), Z3]] = Self.nextAlias[T1, T2]
 
   def nextAlias[T1, T2]: InductionDemo[Successor[T1, Z1], Successor[T2, Z2], Successor[(T1, T2), Z3]] =
