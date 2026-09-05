@@ -1,6 +1,4 @@
 package net.scalax.simple.append.support
-package collectioncount22
-package typeparameter22
 
 import org.scalatest._
 import flatspec._

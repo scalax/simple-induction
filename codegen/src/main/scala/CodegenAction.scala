@@ -6,6 +6,6 @@ object CodegenAction {
   def main(arr: Array[String]): Unit = {
     val pathImpl = Paths.get("").toAbsolutePath
     val pathRoot = os.Path(pathImpl) / "induction" / "src" / "main" / "scala" / "net" / "scalax" / "simple" / "induction"
-    os.write.over(target = pathRoot / "Induction.scala", data = net.scalax.txt.Induction(22).body, createFolders = true)
+    os.write.over(target = pathRoot / "Induction.scala", data = net.scalax.txt.Induction(5, 7).body, createFolders = true)
   }
 }

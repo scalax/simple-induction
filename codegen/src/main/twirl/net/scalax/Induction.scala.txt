@@ -1,29 +1,29 @@
-@(TupleSize: Int)
+@(parameterSize: Int, tupleSize: Int)
 
 package net.scalax.simple.append.support
-package collectioncount@{TupleSize}
-package typeparameter@{TupleSize}
+package collectioncount@{tupleSize}
+package typeparameter@{parameterSize}
 
 trait SimpleAppender[
-    M@{TupleSize}[
-    @for(i1 <- 1 to TupleSize) { _ <: Col@i1, }
+    M@{tupleSize}[
+    @for(i1 <- 1 to tupleSize) { _ <: Col@i1, }
     ],
-    @for(i1 <- 1 to TupleSize) { Col@i1, }
-    @for(i1 <- 1 to TupleSize) {
-        App@{i1}[@for(i2 <- 1 to TupleSize) { _, } _ <: Col@i1 ] <: Col@i1,
+    @for(i1 <- 1 to tupleSize) { Col@i1, }
+    @for(i1 <- 1 to tupleSize) {
+        App@{i1}[@for(i2 <- 1 to parameterSize) { _, } _ <: Col@i1 ] <: Col@i1,
     }
-    @for(i1 <- 1 to TupleSize) { ColIns@i1 <: Col@i1, }
+    @for(i1 <- 1 to tupleSize) { ColIns@i1 <: Col@i1, }
 ] {
-    def current: M@{TupleSize}[
-        @for(i1 <- 1 to TupleSize) { ColIns@i1, }
+    def current: M@{tupleSize}[
+        @for(i1 <- 1 to tupleSize) { ColIns@i1, }
     ]
 
-    def next[@for(i1 <- 1 to TupleSize) { T@i1, }]: SimpleAppender[
-        M@{TupleSize},
-        @for(i1 <- 1 to TupleSize) { Col@i1, }
-        @for(i1 <- 1 to TupleSize) { App@i1, }
-        @for(i1 <- 1 to TupleSize) {
-            App@{i1}[@for(i2 <- 1 to TupleSize) { T@{i2}, } ColIns@i1],
+    def next[@for(i1 <- 1 to parameterSize) { T@i1, }]: SimpleAppender[
+        M@{tupleSize},
+        @for(i1 <- 1 to tupleSize) { Col@i1, }
+        @for(i1 <- 1 to tupleSize) { App@i1, }
+        @for(i1 <- 1 to tupleSize) {
+            App@{i1}[@for(i2 <- 1 to parameterSize) { T@{i2}, } ColIns@i1],
         }
     ]
 }
